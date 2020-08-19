@@ -56,6 +56,12 @@ public class LNZTreeView: UIView {
         return UITableView(frame: frame, style: .plain)
     }()
     
+    lazy var refreshControl: UIRefreshControl = {
+        let proxy = UIRefreshControl()
+        proxy.tintColor = .darkGray
+        return proxy
+    }()
+    
     public var keyboardDismissMode : UIScrollView.KeyboardDismissMode {
         get {
             return tableView.keyboardDismissMode
@@ -92,9 +98,6 @@ public class LNZTreeView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableFooterView = UIView()
         
-        let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = .darkGray
-        refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
         }
