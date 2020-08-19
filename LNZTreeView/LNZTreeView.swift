@@ -52,9 +52,7 @@ public class LNZTreeView: UIView {
         tableView.setEditing(editing, animated: animated)
     }
 
-    public lazy var tableView: UITableView! = {
-        return UITableView(frame: frame, style: .plain)
-    }()
+    public var tableView: UITableView!
     
     public var keyboardDismissMode : UIScrollView.KeyboardDismissMode {
         get {
@@ -87,6 +85,8 @@ public class LNZTreeView: UIView {
     }
     
     private func commonInit() {
+        
+        tableView = UITableView(frame: .zero, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
