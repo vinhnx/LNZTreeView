@@ -52,7 +52,7 @@ public class LNZTreeView: UIView {
         tableView.setEditing(editing, animated: animated)
     }
 
-    lazy var tableView: UITableView! = {
+    public lazy var tableView: UITableView! = {
         return UITableView(frame: frame, style: .plain)
     }()
     
@@ -90,6 +90,7 @@ public class LNZTreeView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.tableFooterView = UIView()
         addSubview(tableView)
         
         if #available(iOS 11.0, *) {
