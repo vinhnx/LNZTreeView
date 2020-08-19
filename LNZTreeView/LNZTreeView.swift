@@ -230,7 +230,7 @@ public class LNZTreeView: UIView {
      - parameter identifier: The reuse identifier for the cell. This parameter must not be nil and must not be an empty string.
      */
     @objc(registerCellClass:forCellReuseIdentifier:)
-    public func register(_ cellClass: AnyClass?, forCellReuseIdentifier identifier: String) {
+    public func registerCell(_ cellClass: AnyClass?, forCellReuseIdentifier identifier: String) {
         tableView.register(cellClass, forCellReuseIdentifier: identifier)
     }
     
@@ -241,7 +241,7 @@ public class LNZTreeView: UIView {
      - parameter identifier: The reuse identifier for the cell. This parameter must not be nil and must not be an empty string.
      */
     @objc(registerNib:forCellReuseIdentifier:)
-    public func register(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
+    public func registerNib(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
         tableView.register(nib, forCellReuseIdentifier: identifier)
     }
     
