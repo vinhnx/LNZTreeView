@@ -51,7 +51,11 @@ public class LNZTreeView: UIView {
     public func setEditing(_ editing: Bool, animated: Bool) {
         tableView.setEditing(editing, animated: animated)
     }
-
+    
+    public var tableViewInstance: UITableView {
+        return tableView
+    }
+    
     lazy var tableView: UITableView! = {
         return UITableView(frame: frame, style: .plain)
     }()
@@ -91,7 +95,6 @@ public class LNZTreeView: UIView {
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableFooterView = UIView()
-        
         addSubview(tableView)
         
         if #available(iOS 11.0, *) {
@@ -109,7 +112,7 @@ public class LNZTreeView: UIView {
                 ])
         }
     }
-    
+
     open override func didMoveToSuperview() {
         super.didMoveToSuperview()
 
