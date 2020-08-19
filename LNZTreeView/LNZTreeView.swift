@@ -234,6 +234,7 @@ public class LNZTreeView: UIView {
         tableView.register(cellClass, forCellReuseIdentifier: identifier)
     }
     
+    /*
     /**
      Registers a nib object containing a cell with the table view under a specified identifier.
      
@@ -244,6 +245,7 @@ public class LNZTreeView: UIView {
     public func registerNib(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
         tableView.register(nib, forCellReuseIdentifier: identifier)
     }
+    */
     
     /**
      Returns a reusable table-view cell object for the specified reuse identifier and adds it to the table.
