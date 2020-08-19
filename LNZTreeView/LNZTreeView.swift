@@ -56,12 +56,6 @@ public class LNZTreeView: UIView {
         return UITableView(frame: frame, style: .plain)
     }()
     
-    lazy var refreshControl: UIRefreshControl = {
-        let proxy = UIRefreshControl()
-        proxy.tintColor = .darkGray
-        return proxy
-    }()
-    
     public var keyboardDismissMode : UIScrollView.KeyboardDismissMode {
         get {
             return tableView.keyboardDismissMode
@@ -97,11 +91,6 @@ public class LNZTreeView: UIView {
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableFooterView = UIView()
-        
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = refreshControl
-        }
-        
         addSubview(tableView)
         
         if #available(iOS 11.0, *) {
@@ -118,11 +107,6 @@ public class LNZTreeView: UIView {
                 NSLayoutConstraint(item: tableView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: 0)
                 ])
         }
-    }
-    
-    public var onRefreshControlChanged: (() -> ())?
-    @objc private func handleRefreshControl() {
-        onRefreshControlChanged?()
     }
     
     open override func didMoveToSuperview() {
