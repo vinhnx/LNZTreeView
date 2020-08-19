@@ -52,7 +52,9 @@ public class LNZTreeView: UIView {
         tableView.setEditing(editing, animated: animated)
     }
 
-    public var tableView: UITableView!
+    lazy var tableView: UITableView! = {
+        return UITableView(frame: frame, style: .plain)
+    }()
     
     public var keyboardDismissMode : UIScrollView.KeyboardDismissMode {
         get {
@@ -85,12 +87,11 @@ public class LNZTreeView: UIView {
     }
     
     private func commonInit() {
-        
-        tableView = UITableView(frame: .zero, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableFooterView = UIView()
+        
         addSubview(tableView)
         
         if #available(iOS 11.0, *) {
@@ -108,7 +109,6 @@ public class LNZTreeView: UIView {
                 ])
         }
     }
-
     
     open override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -230,11 +230,10 @@ public class LNZTreeView: UIView {
      - parameter identifier: The reuse identifier for the cell. This parameter must not be nil and must not be an empty string.
      */
     @objc(registerCellClass:forCellReuseIdentifier:)
-    public func registerCell(_ cellClass: AnyClass?, forCellReuseIdentifier identifier: String) {
+    public func register(_ cellClass: AnyClass?, forCellReuseIdentifier identifier: String) {
         tableView.register(cellClass, forCellReuseIdentifier: identifier)
     }
     
-    /*
     /**
      Registers a nib object containing a cell with the table view under a specified identifier.
      
@@ -242,10 +241,9 @@ public class LNZTreeView: UIView {
      - parameter identifier: The reuse identifier for the cell. This parameter must not be nil and must not be an empty string.
      */
     @objc(registerNib:forCellReuseIdentifier:)
-    public func registerNib(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
+    public func register(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
         tableView.register(nib, forCellReuseIdentifier: identifier)
     }
-    */
     
     /**
      Returns a reusable table-view cell object for the specified reuse identifier and adds it to the table.
